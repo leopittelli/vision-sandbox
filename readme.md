@@ -42,6 +42,6 @@ You can use a JSON with this structure:
 1. Install gcloud: https://cloud.google.com/sdk/docs/overview
 2. Create project and and download your service credentials.json file from the project's console: https://cloud.google.com/vision/docs/quickstart
 3. Add the library as explained in: https://cloud.google.com/appengine/docs/python/tools/using-libraries-python-27#vendoring
-⋅⋅1. Create `lib` folder.
-⋅⋅2. Run `pip install -t lib --upgrade google-api-python-client`
+  1. Create `lib` folder.
+  2. Run `pip install -t lib --upgrade google-api-python-client`
 4. Run the app `dev_appserver.py .`
