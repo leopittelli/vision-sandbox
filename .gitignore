@@ -1,0 +1,5 @@
+/lib
+credentials.json
+*.pyc
+.idea
+*.log

@@ -1,0 +1,177 @@
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Google Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>OCR Example</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="/statics/images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="/statics/images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/statics/images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="/statics/images/favicon.png">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.0/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="/statics/styles.css">
+  </head>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h3>OCR Example</h3>
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+          <a href="#upload" class="mdl-layout__tab {% if section == 'upload' %}is-active{% endif %}">Upload</a>
+          <a href="#result" class="mdl-layout__tab {% if section == 'result' %}is-active{% endif %}">Result</a>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="mdl-layout__tab-panel {% if section == 'upload' %}is-active{% endif %}" id="upload">
+ <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                <h4 class="mdl-cell mdl-cell--12-col">Detection Types</h4>
+                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                  <h5>LABEL_DETECTION</h5>
+                  Execute Image Content Analysis on the entire image.
+                </div>
+                <div class="section__text mdl-cell mdl-cell--12-col-desktop">
+                  <h5>TEXT_DETECTION</h5>
+                  Perform Optical Character Recognition (OCR) on text within the image.
+                </div>
+                <div class="section__text mdl-cell mdl-cell--12-col-desktop">
+                  <h5>FACE_DETECTION</h5>
+                  Detect faces within the image.
+                </div>
+                <div class="section__text mdl-cell mdl-cell--12-col-desktop">
+                  <h5>LANDMARK_DETECTION</h5>
+                  Detect geographic landmarks within the image.
+                </div>
+                <div class="section__text mdl-cell mdl-cell--12-col-desktop">
+                  <h5>LOGO_DETECTION</h5>
+                  Detect company logos within the image.
+                </div>
+                <div class="section__text mdl-cell mdl-cell--12-col-desktop">
+                  <h5>SAFE_SEARCH_DETECTION</h5>
+                  Determine image safe search properties on the image.
+                </div>
+                <div class="section__text mdl-cell mdl-cell--12-col-desktop">
+                  <h5>IMAGE_PROPERTIES</h5>
+                  Compute a set of properties about the image (such as the image's dominant colors).
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text">
+                <h4>Upload image</h4>
+              	<form action="/" enctype="multipart/form-data" method="post">
+              		<div class="mdl-grid">
+	              		<div class="mdl-textfield mdl-selectfield mdl-selectfield--floating-label mdl-js-selectfield">
+						  <select id="type" name="type" class="mdl-selectfield__select">
+						    <option value="0">TEXT_DETECTION</option>
+						  </select>
+						  <label class="mdl-selectfield__label" for="type">Select type</label>
+						</div>
+					</div>
+					<div class="mdl-grid">
+						<div class="mdl-textfield mdl-js-textfield mdl-textfield--file">
+						    <input class="mdl-textfield__input" placeholder="Image file" type="text" id="uploadLabel" readonly/>
+						    <div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+						    	<i class="material-icons">attach_file</i>
+						    	<input type="file" id="uploadFile" name="img">
+						    </div>
+						</div>
+					</div>
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit">
+						Submit
+					</button>
+			  	</form>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="mdl-layout__tab-panel {% if section == 'result' %}is-active{% endif %}" id="result">
+          <section class="mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col">
+              <h4>Result</h4>
+              <section class="section--footer mdl-color--white mdl-grid">
+	            <div class="section__text mdl-cell mdl-cell--4-col-desktop">
+				  {% if result %}
+					<span class="result">{{ result }}</span>
+			  	  {% else %}
+			  	  	<h5>No result</h5>
+			  	  {% endif %}
+	            </div>
+				<div class="section__text mdl-cell mdl-cell--8-col-desktop">
+  	              {% if image %}
+					<img src="data:image/png;base64,{{ image }}">
+			 	  {% endif %}
+	            </div>
+	          </section>
+            </div>
+          </section>
+        </div>
+        <footer class="mdl-mega-footer">
+          <div class="mdl-mega-footer--middle-section">
+            <div class="mdl-mega-footer--drop-down-section">
+              <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+              <h1 class="mdl-mega-footer--heading">About</h1>
+              <ul class="mdl-mega-footer--link-list">
+                <li><a href="https://twitter.com/leopittelli" target="_blank">@leopittelli</a></li>
+                <li><a href="https://github.com/leopittelli/vision-sandbox" target="_blank">View source</a></li>
+              </ul>
+            </div>
+        </footer>
+      </main>
+    </div>
+    <a href="https://github.com/leopittelli/vision-sandbox" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">view source</a>
+    <script src="https://code.getmdl.io/1.2.0/material.min.js"></script>
+    <script type="text/javascript">
+	    document.getElementById("uploadFile").onchange = function () {
+	    	document.getElementById("uploadLabel").value = this.files[0].name;
+		};
+		document.getElementById("uploadLabel").onclick = function () {
+	    	document.getElementById("uploadFile").click();
+		};
+
+		//MDL select
+		!function(){"use strict";var e=function(e){this.element_=e,this.init()};window.MaterialSelectfield=e,e.prototype.Constant_={},e.prototype.CssClasses_={LABEL:"mdl-selectfield__label",SELECT:"mdl-selectfield__select",IS_DIRTY:"is-dirty",IS_FOCUSED:"is-focused",IS_DISABLED:"is-disabled",IS_INVALID:"is-invalid",IS_UPGRADED:"is-upgraded"},e.prototype.onFocus_=function(e){this.element_.classList.add(this.CssClasses_.IS_FOCUSED)},e.prototype.onBlur_=function(e){this.element_.classList.remove(this.CssClasses_.IS_FOCUSED)},e.prototype.onReset_=function(e){this.updateClasses_()},e.prototype.updateClasses_=function(){this.checkDisabled(),this.checkValidity(),this.checkDirty()},e.prototype.checkDisabled=function(){this.select_.disabled?this.element_.classList.add(this.CssClasses_.IS_DISABLED):this.element_.classList.remove(this.CssClasses_.IS_DISABLED)},e.prototype.checkDisabled=e.prototype.checkDisabled,e.prototype.checkValidity=function(){this.select_.validity.valid?this.element_.classList.remove(this.CssClasses_.IS_INVALID):this.element_.classList.add(this.CssClasses_.IS_INVALID)},e.prototype.checkValidity=e.prototype.checkValidity,e.prototype.checkDirty=function(){this.select_.value&&this.select_.value.length>0?this.element_.classList.add(this.CssClasses_.IS_DIRTY):this.element_.classList.remove(this.CssClasses_.IS_DIRTY)},e.prototype.checkDirty=e.prototype.checkDirty,e.prototype.disable=function(){this.select_.disabled=!0,this.updateClasses_()},e.prototype.disable=e.prototype.disable,e.prototype.enable=function(){this.select_.disabled=!1,this.updateClasses_()},e.prototype.enable=e.prototype.enable,e.prototype.change=function(e){e&&(this.select_.value=e),this.updateClasses_()},e.prototype.change=e.prototype.change,e.prototype.init=function(){this.element_&&(this.label_=this.element_.querySelector("."+this.CssClasses_.LABEL),this.select_=this.element_.querySelector("."+this.CssClasses_.SELECT),this.select_&&(this.boundUpdateClassesHandler=this.updateClasses_.bind(this),this.boundFocusHandler=this.onFocus_.bind(this),this.boundBlurHandler=this.onBlur_.bind(this),this.boundResetHandler=this.onReset_.bind(this),this.select_.addEventListener("change",this.boundUpdateClassesHandler),this.select_.addEventListener("focus",this.boundFocusHandler),this.select_.addEventListener("blur",this.boundBlurHandler),this.select_.addEventListener("reset",this.boundResetHandler),this.updateClasses_(),this.element_.classList.add(this.CssClasses_.IS_UPGRADED)))},e.prototype.mdlDowngrade_=function(){this.select_.removeEventListener("change",this.boundUpdateClassesHandler),this.select_.removeEventListener("focus",this.boundFocusHandler),this.select_.removeEventListener("blur",this.boundBlurHandler),this.select_.removeEventListener("reset",this.boundResetHandler)},componentHandler.register({constructor:e,classAsString:"MaterialSelectfield",cssClass:"mdl-js-selectfield",widget:!0})}();
+	</script>
+  </body>
+</html>
