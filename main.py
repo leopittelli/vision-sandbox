@@ -24,7 +24,7 @@ class MainPage(webapp2.RequestHandler):
 
     def post(self):
         image_content = base64.b64encode(self.request.get('img'))
-        feature_type = 0 #FEATURE_TYPES[self.request.get('type')]
+        feature_type = 'TEXT_DETECTION' #FEATURE_TYPES[self.request.get('type')]
 
         credentials = GoogleCredentials.get_application_default()
         service = discovery.build('vision', 'v1', credentials=credentials,
